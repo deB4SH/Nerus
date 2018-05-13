@@ -12,6 +12,7 @@ compile:
       - /root/.m2/*
       - /root/.m2/repository/
   script:
-    - ls -al /root/.m2
     - cd nerus-parent
     - mvn clean install verify
+    - ls -al /root/.m2
+    - ls -al /root/.m2/repository
