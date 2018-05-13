@@ -1,7 +1,18 @@
 image: maven:latest
 
+cache:
+  paths:
+    - ./.m2/repository
+  key: "$CI_BUILD_REF_NAME"
+
 compile:
   stage: build
+  artifacts:
+    paths:
+        - nerus-lib/target/*.jar
+        - nerus-mdl/target/*.jar
+        - nerus-app/target/*.jar
   script:
+    - pwd
     - cd nerus-parent
     - mvn clean install verify

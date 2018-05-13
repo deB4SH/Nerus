@@ -536,3 +536,4 @@ hs_err_pid*
 
 # USER defined rules
 *.iml
+.gitkeep
