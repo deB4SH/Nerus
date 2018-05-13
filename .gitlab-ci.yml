@@ -18,3 +18,4 @@ compile:
     - pwd
     - cd nerus-parent
     - mvn clean install verify
+    - ls -l $HOME
