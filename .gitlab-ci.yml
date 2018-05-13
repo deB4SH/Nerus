@@ -1,4 +1,4 @@
-image: maven:3.5.0-jdk-8
+image: maven:3.5.3-jdk-10
 
 compile:
   stage: build
