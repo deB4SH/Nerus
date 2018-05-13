@@ -8,15 +8,17 @@
         <version>0.0.0-SNAPSHOT</version>
         <relativePath>../nerus-parent/pom.xml</relativePath>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>nerus-lib</artifactId>
+    <packaging>jar</packaging>
+
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
+            <groupId>de.b4sh</groupId>
+            <artifactId>nerus-mdl</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

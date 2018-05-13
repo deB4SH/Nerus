@@ -14,12 +14,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>de.b4sh.nerus</groupId>
+            <groupId>de.b4sh</groupId>
             <artifactId>nerus-mdl</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>de.b4sh.nerus</groupId>
+            <groupId>de.b4sh</groupId>
             <artifactId>nerus-lib</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

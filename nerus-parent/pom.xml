@@ -17,12 +17,36 @@
     </modules>
 
     <properties>
+        <java.version>1.8</java.version>
+
         <version.test.junit>4.12</version.test.junit>
+        <version.maven.compiler>3.7.0</version.maven.compiler>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${version.maven.compiler}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
     <dependencies>
-
         <!-- TEST Dependencies -->
         <dependency>
             <groupId>junit</groupId>
@@ -33,5 +57,10 @@
 
     </dependencies>
 
+    <scm>
+        <connection>scm:git:https://git.0x09.de/ByteStreamTool/Nerus.git</connection>
+        <developerConnection>scm:git:git@git.0x09.de:ByteStreamTool/Nerus.git</developerConnection>
+        <url>https://git.0x09.de/ByteStreamTool/Nerus</url>
+    </scm>
 
 </project>
