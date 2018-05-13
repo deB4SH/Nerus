@@ -1,0 +1,7 @@
+image: maven:latest
+
+compile:
+  stage: build
+  script:
+    - cd nerus-parent
+    - mvn clean install verify
