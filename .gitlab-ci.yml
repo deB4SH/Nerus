@@ -1,0 +1,12 @@
+image: maven:3.5.0-jdk-8
+
+compile:
+  stage: build
+  script:
+    - cd nerus-parent
+    - mvn clean install
+
+verify:
+  script:
+    - cd nerus-parent
+    - mvn verify
