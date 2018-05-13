@@ -11,5 +11,6 @@ compile:
         - nerus-mdl/target/*.jar
         - nerus-app/target/*.jar
   script:
+    - pwd
     - cd nerus-parent
     - mvn clean install verify
