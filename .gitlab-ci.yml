@@ -7,7 +7,9 @@ compile:
     - ${USER_HOME}/.m2
   artifacts:
     paths:
-        - target/*.jar
+        - nerus-lib/target/*.jar
+        - nerus-mdl/target/*.jar
+        - nerus-app/target/*.jar
   script:
     - cd nerus-parent
     - mvn clean install verify
