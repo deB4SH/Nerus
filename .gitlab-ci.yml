@@ -4,10 +4,10 @@ compile:
   stage: build
   cache:
    paths:
-    - /cache
+    - ~/.m2
   artifacts:
     paths:
         - target/*.jar
   script:
     - cd nerus-parent
-    - mvn clean install verify -Dmaven.repo.local=/cache
+    - mvn clean install verify
