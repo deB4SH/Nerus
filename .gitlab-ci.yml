@@ -1,10 +1,5 @@
 image: maven:latest
 
-cache:
-  paths:
-    - /root/.m2/*
-    - /root/.m2/repository/
-
 compile:
   stage: build
   artifacts:
@@ -12,6 +7,10 @@ compile:
         - nerus-lib/target/*.jar
         - nerus-mdl/target/*.jar
         - nerus-app/target/*.jar
+  cache:
+    paths:
+      - /root/.m2/*
+      - /root/.m2/repository/
   script:
     - ls -al /root/.m2
     - cd nerus-parent
