@@ -4,9 +4,4 @@ compile:
   stage: build
   script:
     - cd nerus-parent
-    - mvn clean install
-
-verify:
-  script:
-    - cd nerus-parent
-    - mvn verify
+    - mvn clean install verify
