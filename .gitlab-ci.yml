@@ -13,6 +13,8 @@ compile:
         - nerus-mdl/target/*.jar
         - nerus-app/target/*.jar
   script:
+    - whoami
+    - echo $HOME
     - pwd
     - cd nerus-parent
     - mvn clean install verify
