@@ -2,7 +2,7 @@ image: maven:latest
 
 cache:
   paths:
-    - /root/.m2
+    - /root/.m2/respoitory/**
   key: "$CI_BUILD_REF_NAME"
 
 compile:
@@ -13,9 +13,6 @@ compile:
         - nerus-mdl/target/*.jar
         - nerus-app/target/*.jar
   script:
-    - whoami
-    - echo $HOME
-    - pwd
+    - ls -al /root/.m2
     - cd nerus-parent
     - mvn clean install verify
-    - ls -al /root/.m2
