@@ -1,10 +1,16 @@
 image: maven:latest
 
+cache:
+  paths:
+    - .m2/
+  key: "$CI_BUILD_REF_NAME"
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
+
 compile:
   stage: build
-  cache:
-   paths:
-    - ${USER_HOME_DIR}/.m2
+
   artifacts:
     paths:
         - nerus-lib/target/*.jar
