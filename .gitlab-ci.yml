@@ -6,7 +6,8 @@ compile:
    paths:
     - /cache
   artifacts:
-    - target/*.jar
+    paths:
+        - target/*.jar
   script:
     - cd nerus-parent
     - mvn clean install verify -Dmaven.repo.local=/cache
