@@ -2,8 +2,8 @@ image: maven:latest
 
 cache:
   paths:
-    - /root/.m2/respoitory/**
-  key: "$CI_BUILD_REF_NAME"
+    - /root/.m2/*
+    - /root/.m2/repository/
 
 compile:
   stage: build
