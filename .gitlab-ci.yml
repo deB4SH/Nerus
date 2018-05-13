@@ -4,7 +4,7 @@ compile:
   stage: build
   cache:
    paths:
-    - ${USER_HOME}/.m2
+    - ${USER_HOME_DIR}/.m2
   artifacts:
     paths:
         - nerus-lib/target/*.jar
