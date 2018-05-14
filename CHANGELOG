@@ -2,6 +2,7 @@
 =======
 * adding lib packages
     * new: os package
+    * new: generator package and implementations
 
 0.0.0
 =======

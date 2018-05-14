@@ -5,10 +5,10 @@ public interface IByteArrayGenerator {
     /**
      * Generates a byte array with given length.
      *
-     * @param legnth length to generate
+     * @param length length to generate
      * @return an instanced byte array
      */
-    byte[] generateArray(int legnth);
+    byte[] generateArray(int length);
 
     /**
      * Shorthand function to generate a byte array with a predefined length of 1024.
