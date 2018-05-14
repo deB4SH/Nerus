@@ -20,4 +20,7 @@ compile:
   #Run Script
   script:
     - cd nerus-parent
-    - mvn clean install verify
+    - mvn clean
+    - mvn compile
+    - mvn test
+    - mvn install
