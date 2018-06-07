@@ -23,6 +23,11 @@
             <artifactId>nerus-lib</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.java-websocket</groupId>
+            <artifactId>Java-WebSocket</artifactId>
+            <version>${version.websocket}</version>
+        </dependency>
     </dependencies>
 
     <build>
