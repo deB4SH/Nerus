@@ -15,10 +15,46 @@
 
     <artifactId>nerus-docker-parent</artifactId>
 
-    <!--<modules>
+    <modules>
         <module>../nerus-docker-commander</module>
         <module>../nerus-docker-slave</module>
-    </modules>-->
+    </modules>
 
+    <properties>
+        <port.slave.one>61000</port.slave.one>
+        <port.slave.two>61001</port.slave.two>
+        <port.commander>61002</port.commander>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${plugin.version.docker}</version>
+                    <configuration>
+                        <machine>
+                            <name>dev</name>
+                            <autoCreate>true</autoCreate>
+                            <createOptions>
+                                <driver>virtualbox</driver>
+                                <virtualbox-cpu-count>4</virtualbox-cpu-count>
+                            </createOptions>
+                        </machine>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>build docker images</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
