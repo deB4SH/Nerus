@@ -11,6 +11,8 @@ variables:
 compile:
   #Stage
   stage: build
+  tags:
+    - privileged
   #Artifacts
   artifacts:
     paths:

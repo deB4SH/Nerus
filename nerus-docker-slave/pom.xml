@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>nerus-docker-parent</artifactId>
@@ -12,5 +12,88 @@
 
     <artifactId>nerus-docker-slave</artifactId>
 
+    <properties>
+        <image.name>de.b4sh.nerus.slave.one:${project.version}</image.name>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${plugin.version.maven.resource}</version>
+                <executions>
+                    <execution>
+                        <id>copy-dockerfiles</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${docker.files.build.dir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${docker.files.base.dir}</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <configuration>
+                    <autoPull>${docker.autopull}</autoPull>
+                    <verbose>${docker.verbose}</verbose>
+                    <images>
+                        <image>
+                            <name>${image.name}</name>
+                            <alias>slave-one</alias>
+                            <build>
+                                <nocache>${docker.cache}</nocache>
+                                <compression>none</compression>
+                                <dockerFileDir>${docker.files.build.dir}</dockerFileDir>
+                            </build>
+                            <run>
+                                <skip>${docker.skip}</skip>
+                                <network>
+                                    <mode>bridge</mode>
+                                    <alias>slave-one</alias>
+                                </network>
+                                <namingStrategy>alias</namingStrategy>
+                                <env>
+                                    <DBUS_SESSION_BUS_ADDRESS>/dev/null</DBUS_SESSION_BUS_ADDRESS>
+                                </env>
+                                <ports>
+                                    <port>${port.slave.one}:8081</port>
+                                </ports>
+                                <log>
+                                    <enabled>${docker.logging}</enabled>
+                                    <prefix>slave-one:</prefix>
+                                    <date>DEFAULT</date>
+                                </log>
+                            </run>
+                        </image>
+                    </images>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>slave-start</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>mongo-stop</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

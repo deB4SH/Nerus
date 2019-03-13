@@ -17,10 +17,27 @@
     </modules>
 
     <properties>
+        <!-- JAVA RELATED -->
         <java.version>1.8</java.version>
-
-        <version.test.junit>4.12</version.test.junit>
+        <!-- VERSION RELATED -->
         <version.maven.compiler>3.7.0</version.maven.compiler>
+        <version.websocket>1.3.8</version.websocket>
+        <version.test.junit>4.12</version.test.junit>
+        <!-- PLUGIN RELATED -->
+        <plugin.version.docker>0.23.0</plugin.version.docker>
+        <plugin.version.maven.compiler>3.5.1</plugin.version.maven.compiler>
+        <plugin.version.maven.resource>2.7</plugin.version.maven.resource>
+        <plugin.version.mockito>2.13.0</plugin.version.mockito>
+        <plugin.version.powermock>2.0.0-beta.5</plugin.version.powermock>
+        <!-- DOCKER RELATED -->
+        <docker.autopull>true</docker.autopull>
+        <docker.skip>false</docker.skip>
+        <docker.cache>false</docker.cache>
+        <docker.verbose>true</docker.verbose>
+        <docker.logging>true</docker.logging>
+        <docker.files.base.dir>${project.basedir}/src/docker</docker.files.base.dir>
+        <docker.files.build.dir>${project.build.directory}/docker-files</docker.files.build.dir>
+        <docker.apiVersion>1.24</docker.apiVersion>
     </properties>
 
     <build>
