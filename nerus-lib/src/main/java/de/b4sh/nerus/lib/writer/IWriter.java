@@ -17,15 +17,4 @@ public interface IWriter {
      * @param array       informations that should be appended to the file
      */
     void writeByteArray(File destination, byte[] array);
-
-    /**
-     * Writes a String to a desired file.
-     * The standard implementation should append the information to the file.
-     * Check back for specific notices inside the implemented writers if this behavior is overwritten.
-     *
-     * @param destination target to write data to
-     * @param data        information as String that should be appeded to the file
-     */
-    void writeString(File destination, String data);
-
 }
