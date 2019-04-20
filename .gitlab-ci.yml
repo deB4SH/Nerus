@@ -16,13 +16,11 @@ compile:
   #Artifacts
   artifacts:
     paths:
-        - nerus-lib/target/*.jar
-        - nerus-mdl/target/*.jar
-        - nerus-app/target/*.jar
+      - nerus-lib/target/*.jar
+      - nerus-mdl/target/*.jar
+      - nerus-app/target/*.jar
   #Run Script
   script:
     - cd nerus-parent
     - mvn clean
-    - mvn compile
-    - mvn test
     - mvn install
