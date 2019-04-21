@@ -20,7 +20,7 @@ public class NullWriterTest {
 
     @Before
     public void setUp() throws Exception {
-        this.unit = new NullWriter();
+        this.unit = new NullWriter(null);
     }
 
     @After

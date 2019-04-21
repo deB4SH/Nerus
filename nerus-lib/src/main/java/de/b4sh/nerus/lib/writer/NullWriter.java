@@ -8,16 +8,12 @@ import java.io.File;
  */
 final class NullWriter extends AbstractBaseWriter {
 
-    public NullWriter() {
-        super(null);
-    }
-
     /**
      * Public constructor with the next abstractWriter to chain to.
      *
      * @param next next writer to pass information to
      */
-    public NullWriter(final AbstractBaseWriter next) {
+    NullWriter(final AbstractBaseWriter next) {
         super(next);
     }
 

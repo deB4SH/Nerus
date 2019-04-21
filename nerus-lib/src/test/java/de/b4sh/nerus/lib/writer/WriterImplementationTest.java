@@ -15,6 +15,7 @@ public class WriterImplementationTest {
     public void getClassByKeyKnownKey() {
         final Class impl = WriterImplementation.getClassByKey("null");
         Assert.assertNotNull(impl);
+        Assert.assertEquals(NullWriter.class, impl);
     }
 
     @Test

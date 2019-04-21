@@ -8,7 +8,8 @@ import java.util.logging.Logger;
  * The WriterImplementation enumerator provides a link between easy keys and the desired implemented writer.
  */
 public enum WriterImplementation {
-    NULLWRITER("null", NullWriter.class);
+    NULLWRITER("null", NullWriter.class),
+    BUFFEREDWRITER("buffered", BufferedWriter.class);
 
     private final String key;
     private final Class implementation;
