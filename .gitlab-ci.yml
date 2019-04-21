@@ -20,4 +20,4 @@ compile:
   script:
     - cd nerus-parent
     - mvn clean
-    - mvn install
+    - mvn install -Ddocker.skip=true
