@@ -31,9 +31,12 @@ public final class WriterFactory {
 
     private static IWriter buildWriterInstance(final String key, final AbstractBaseWriter next) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         final Class writerClass = WriterImplementation.getClassByKey(key);
+        if (writerClass == null) {
+            WriterFactory.log.log(Level.WARNING, "Could not retrieve writer class by key. returning null.");
+            return null;
+        }
         //build writer
         final Constructor<?> ctor = writerClass.getDeclaredConstructor(AbstractBaseWriter.class);
-        final IWriter instance = (IWriter) ctor.newInstance(next);
-        return instance;
+        return (IWriter) ctor.newInstance(next);
     }
 }
