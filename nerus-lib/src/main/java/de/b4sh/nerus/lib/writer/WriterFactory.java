@@ -5,6 +5,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ */
 public final class WriterFactory {
 
     private static final Logger log = Logger.getLogger(WriterFactory.class.getName());
@@ -14,7 +17,7 @@ public final class WriterFactory {
         try {
             for (int i = list.length - 1; i >= 0; i--) {
                 if (i == list.length - 1) { //construct last used writer implementation
-                    last = (AbstractBaseWriter) WriterFactory.buildWriterInstance(list[i], null);
+                    last = WriterFactory.buildWriterInstance(list[i], null);
                     continue;
                 }//construct first and middle ones
                 last = WriterFactory.buildWriterInstance(list[i], (AbstractBaseWriter) last);
