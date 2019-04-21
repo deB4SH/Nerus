@@ -1,6 +1,8 @@
 package de.b4sh.nerus.lib.writer;
 
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class WriterFactoryTest {
     static final String[] param = new String[2];
@@ -11,18 +13,11 @@ public class WriterFactoryTest {
         WriterFactoryTest.param[1] = "null";
     }
 
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
-
     @Test
     public void constructWriterChain() {
         final IWriter writer = WriterFactory.constructWriterChain(WriterFactoryTest.param);
         Assert.assertNotNull(writer);
-
+        Assert.assertEquals(writer.getClass(), BufferedWriter.class);
+        Assert.assertEquals(((AbstractBaseWriter) writer).getNext().getClass(), NullWriter.class);
     }
 }
