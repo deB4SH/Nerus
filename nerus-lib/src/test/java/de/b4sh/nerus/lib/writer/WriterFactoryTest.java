@@ -27,6 +27,7 @@ public class WriterFactoryTest {
     public void constructWriterChain() {
         final IWriter writer = WriterFactory.constructWriterChain(WriterFactoryTest.param);
         Assert.assertNotNull(writer);
-
+        Assert.assertEquals(writer.getClass(), BufferedWriter.class);
+        Assert.assertEquals(((AbstractBaseWriter) writer).getNext().getClass(), NullWriter.class);
     }
 }
