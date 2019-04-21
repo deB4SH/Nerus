@@ -33,16 +33,6 @@
                     <groupId>io.fabric8</groupId>
                     <artifactId>docker-maven-plugin</artifactId>
                     <version>${plugin.version.docker}</version>
-                    <configuration>
-                        <machine>
-                            <name>dev</name>
-                            <autoCreate>true</autoCreate>
-                            <createOptions>
-                                <driver>virtualbox</driver>
-                                <virtualbox-cpu-count>4</virtualbox-cpu-count>
-                            </createOptions>
-                        </machine>
-                    </configuration>
                     <executions>
                         <execution>
                             <id>build docker images</id>
@@ -56,5 +46,37 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <profiles>
+        <profile>
+            <id>windows-docker</id>
+            <activation>
+                <os>
+                    <family>Windows</family>
+                </os>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>io.fabric8</groupId>
+                            <artifactId>docker-maven-plugin</artifactId>
+                            <version>${plugin.version.docker}</version>
+                            <configuration>
+                                <machine>
+                                    <name>dev</name>
+                                    <autoCreate>true</autoCreate>
+                                    <createOptions>
+                                        <driver>virtualbox</driver>
+                                        <virtualbox-cpu-count>4</virtualbox-cpu-count>
+                                    </createOptions>
+                                </machine>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

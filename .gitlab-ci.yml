@@ -9,20 +9,15 @@ variables:
   MAVEN_OPTS: -Dmaven.repo.local=${CI_PROJECT_DIR}/.m2
 
 compile:
-  #Stage
   stage: build
   tags:
     - privileged
-  #Artifacts
   artifacts:
     paths:
-        - nerus-lib/target/*.jar
-        - nerus-mdl/target/*.jar
-        - nerus-app/target/*.jar
-  #Run Script
+      - nerus-lib/target/*.jar
+      - nerus-mdl/target/*.jar
+      - nerus-app/target/*.jar
   script:
     - cd nerus-parent
     - mvn clean
-    - mvn compile
-    - mvn test
-    - mvn install
+    - mvn install -Ddocker.skip=true
