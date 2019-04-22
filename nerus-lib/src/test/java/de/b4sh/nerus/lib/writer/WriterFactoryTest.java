@@ -30,4 +30,20 @@ public class WriterFactoryTest {
         final IWriter writer = WriterFactory.constructWriterChain(issueList);
         Assert.assertNull(writer);
     }
+
+    @Test
+    public void constructWriterChainWithIssueKeyNullParameter() {
+        final String[] issueList = new String[3];
+        issueList[0] = "buffered";
+        issueList[1] = "buffered";
+        issueList[2] = null;
+        final IWriter writer = WriterFactory.constructWriterChain(issueList);
+        Assert.assertNull(writer);
+    }
+
+    @Test
+    public void constructWriterChainNullPass() {
+        final IWriter writer = WriterFactory.constructWriterChain(null);
+        Assert.assertNull(writer);
+    }
 }
