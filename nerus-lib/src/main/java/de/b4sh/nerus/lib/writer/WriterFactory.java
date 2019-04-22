@@ -32,11 +32,12 @@ public final class WriterFactory {
         IWriter last = null;
         try {
             for (int i = list.length - 1; i >= 0; i--) {
-                if (i == list.length - 1) { //construct last used writer implementation
-                    last = WriterFactory.buildWriterInstance(list[i], null);
-                    continue;
-                }//construct first and middle ones
-                last = WriterFactory.buildWriterInstance(list[i], (AbstractBaseWriter) last);
+                if (WriterImplementation.isKeyExisting(list[i])) {
+                    last = WriterFactory.buildWriterInstance(list[i], (AbstractBaseWriter) last);
+                } else {
+                    WriterFactory.log.log(Level.WARNING, String.format("Seems that the key %s is not a valid implementation. Please review your chain.", list[i]));
+                    return null;
+                }
             }
         } catch (final InstantiationException e) {
             WriterFactory.log.log(Level.WARNING, "Could not instantiate the given class", e);

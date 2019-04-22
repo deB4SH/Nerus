@@ -20,4 +20,14 @@ public class WriterFactoryTest {
         Assert.assertEquals(writer.getClass(), BufferedWriter.class);
         Assert.assertEquals(((AbstractBaseWriter) writer).getNext().getClass(), NullWriter.class);
     }
+
+    @Test
+    public void constructWriterChainWithIssueKey() {
+        final String[] issueList = new String[3];
+        issueList[0] = "buffered";
+        issueList[1] = "buffered";
+        issueList[2] = "foo";
+        final IWriter writer = WriterFactory.constructWriterChain(issueList);
+        Assert.assertNull(writer);
+    }
 }
