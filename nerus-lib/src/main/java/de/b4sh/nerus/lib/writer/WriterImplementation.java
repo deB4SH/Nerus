@@ -38,6 +38,20 @@ public enum WriterImplementation {
         return desiredImplementation.getImplementation();
     }
 
+    /**
+     * Checks if the given key is a valid option for existing implementations.
+     *
+     * @param key key to check against
+     * @return true on valid key, false on issue
+     */
+    public static boolean isKeyExisting(final String key) {
+        if (key == null) {
+            Logger.getLogger(WriterImplementation.class.getName()).log(Level.WARNING, "Key for getClassByKey was null. Could not retrieve desired implementation.");
+            return false;
+        }
+        return WriterImplementation.getClassByKey(key) != null;
+    }
+
     public Class getImplementation() {
         return this.implementation;
     }
