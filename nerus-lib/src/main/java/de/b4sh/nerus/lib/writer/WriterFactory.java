@@ -29,8 +29,8 @@ public final class WriterFactory {
      * @return null (on issue) or instantiated list of writers
      */
     public static IWriter constructWriterChain(final String... list) {
-        IWriter last = null;
         try {
+            IWriter last = null;
             for (int i = list.length - 1; i >= 0; i--) {
                 if (WriterImplementation.isKeyExisting(list[i])) {
                     last = WriterFactory.buildWriterInstance(list[i], (AbstractBaseWriter) last);
@@ -39,14 +39,14 @@ public final class WriterFactory {
                     return null;
                 }
             }
+            return last;
         } catch (final InstantiationException e) {
             WriterFactory.log.log(Level.WARNING, "Could not instantiate the given class", e);
-            return null;
         } catch (final InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
             WriterFactory.log.log(Level.WARNING, "Could not access constructor or no method found with given parameters. See stacktrace for further informations", e);
-            return null;
         }
-        return last;
+        // an error occurred and has been logged
+        return null;
     }
 
     private static IWriter buildWriterInstance(final String key, final AbstractBaseWriter next) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
