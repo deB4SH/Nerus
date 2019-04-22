@@ -45,10 +45,6 @@ public enum WriterImplementation {
      * @return true on valid key, false on issue
      */
     public static boolean isKeyExisting(final String key) {
-        if (key == null) {
-            Logger.getLogger(WriterImplementation.class.getName()).log(Level.WARNING, "Key for getClassByKey was null. Could not retrieve desired implementation.");
-            return false;
-        }
         return WriterImplementation.getClassByKey(key) != null;
     }
 
